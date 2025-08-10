@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctoral Summit '25 - Thiagarajar School of Management</title>
+    <!-- Tailwind CSS CDN for modern and responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons like the burger menu and down arrows -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts for a professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles to enhance the Tailwind classes and add animations */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: #00BCD4;
+            border-radius: 2px;
+        }
+
+        /* Hero Banner Gradient Animation */
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero-banner {
+            background: linear-gradient(-45deg, #4CAF50, #00BCD4, #4CAF50);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+        }
+
+        /* Marquee Text Animation */
+        @keyframes marquee-scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .scrolling-content {
+            display: inline-block;
+            animation: marquee-scroll 30s linear infinite;
+        }
+
+        /* Auto-scrolling Gallery Animation */
+        @keyframes gallery-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .scrolling-images-container {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+        .scrolling-images {
+            display: flex;
+            gap: 1.5rem;
+            animation: gallery-scroll 40s linear infinite;
+            padding-right: 1.5rem; /* For seamless loop */
+        }
+        .scrolling-images:hover {
+            animation-play-state: paused;
+        }
+        .scrolling-images img {
+            flex-shrink: 0;
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav-menu {
+            display: none;
+        }
+        .mobile-nav-menu.show {
+            display: flex;
+        }
+        .faq-item summary {
+            cursor: pointer;
+            list-style: none; /* Hide default arrow */
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: "\f078"; /* Font Awesome down arrow */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            float: right;
+            transition: transform 0.3s;
+        }
+        .faq-item[open] summary::after {
+            transform: rotate(180deg);
+        }
+        .faq-item[open] summary {
+            margin-bottom: 0.5rem;
+        }
+        .sponsor-logo {
+            min-width: 150px;
+            height: 75px;
+            object-fit: contain;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .sponsor-logo:hover {
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body class="bg-[#FAFAFA] text-[#333] selection:bg-[#4CAF50] selection:text-white">
+    
+    <!-- Header with TSM logo, name, and burger icon -->
+    <header class="bg-white shadow-lg p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <!-- TSM Logo Placeholder -->
+                <img src="1.png" alt="TSM Logo" class="h-12 w-12 rounded-full shadow-lg">
+                <a href="#home" class="text-2xl font-bold text-gray-800">
+                    Thiagarajar School of Management <span class="font-normal text-gray-600">DS '25</span>
+                </a>
+            </div>
+            
+            <!-- Burger Icon for mobile navigation -->
+            <div class="md:hidden">
+                <button id="burger-icon" class="text-2xl text-gray-800 hover:text-[#4CAF50] focus:outline-none transition-colors duration-300">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Desktop Navigation Menu -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Home</a></li>
+                    <li><a href="#about" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">About</a></li>
+                    <li><a href="#tracks" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Tracks and Themes</a></li>
+                    <li><a href="#schedule" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Schedule</a></li>
+                    <li><a href="#updates" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Updates</a></li>
+                    <li><a href="#feedback" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Feedback</a></li>
+                    <li><a href="#faqs" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">FAQs</a></li>
+                    <li><a href="#registration" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Registration</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Navigation Menu -->
+            <nav id="mobile-menu" class="mobile-nav-menu absolute top-full right-0 w-48 bg-white shadow-lg md:hidden rounded-b-lg">
+                <ul class="flex flex-col p-4 space-y-2">
+                    <li><a href="#home" class="block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Home</a></li>
+                    <li><a href="#about" class="block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">About</a></li>
+                    <li><a href="#tracks" class="block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Tracks and Themes</a></li>
+                    <li><a href="#schedule" class="block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Schedule</a></li>
+                    <li><a href="#updates" class="block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Updates</a></li>
+                    <li><a href="#feedback" class="block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Feedback</a></li>
+                    <li><a href="#faqs" class="block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">FAQs</a></li>
+                    <li><a href="#registration" class="block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Registration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Scrolling Marquee for updates -->
+    <div class="bg-gray-200 py-2 overflow-hidden">
+        <div class="container mx-auto">
+            <div class="text-sm text-gray-800 font-medium whitespace-nowrap scrolling-content">
+                <!-- Sample scrolling text for event updates -->
+                <span>[Event Update 1] Registration for the Doctoral Summit '25 is now open! | </span>
+                <span>[Event Update 2] Submission deadline for full papers is September 30, 2025. | </span>
+                <span>[Event Update 3] Keynote speakers to be announced soon! | </span>
+                <span>[Event Update 4] Check out our new collaborations on the About page.</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="mt-4">
+        <!-- Home Section (Hero Banner) -->
+        <section id="home" class="container mx-auto p-4 mb-12">
+            <div class="bg-gray-100 rounded-lg shadow-xl overflow-hidden">
+                <div class="relative h-96 flex items-center justify-center text-white p-8 hero-banner">
+                    <div class="relative text-center">
+                        <!-- DS Logo Placeholder -->
+                        <img src="2.png" alt="DS Logo" class="h-24 mx-auto mb-4 shadow-lg">
+                        <h1 class="text-4xl md:text-6xl font-extrabold mb-2">DOCTORAL SUMMIT '25</h1>
+                        <p class="text-lg md:text-2xl font-light">EMPOWERING DOCTORAL MINDS TO LEAD THE NEXT MANAGEMENT REVOLUTION</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="container mx-auto p-4 mb-12">
+            <h2 class="section-title text-4xl font-bold text-[#4CAF50] text-center mb-10">About Us</h2>
+            
+            <!-- TSM and DS Info -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#00BCD4]">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-4">Thiagarajar School of Management (TSM)</h3>
+                    <p class="text-gray-600">Established in 1962, Thiagarajar School of Management (TSM) is a renowned institution that provides professional education to managers and entrepreneurs. TSM offers AICTE-approved and NBA-accredited MBA and PGDM programs and has been conferred autonomous status by UGC. With a focus on practical training and industry connections, TSM emphasizes holistic education and soft skill development.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#00BCD4]">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-4">Doctoral Research SUMMIT 2025 (DS '25)</h3>
+                    <p class="text-gray-600">The Doctoral Research SUMMIT 2025 is an academic event designed to foster research excellence and collaboration among doctoral scholars. In collaboration with ICN Business School, France, the summit offers a platform for presenting research, receiving expert feedback, and participating in workshops and networking sessions. The focus is on interdisciplinary research, methodological advancement, and industry relevance.</p>
+                </div>
+            </div>
+            
+            <!-- Awards and Selection Process (Placeholder) -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-12 border-t-4 border-[#00BCD4]">
+                <h3 class="text-2xl font-bold text-gray-700 mb-4">Awards and Selection Process</h3>
+                <p class="text-gray-600 italic">[Placeholder: Details on awards and the selection process will be added here.]</p>
+            </div>
+            
+            <!-- Collaborators Section -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-12 border-t-4 border-[#00BCD4]">
+                <h3 class="text-2xl font-bold text-gray-700 mb-6">Our Collaborators</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <!-- Collaborator 1 -->
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/240x240/BCAAA4/FFF?text=ICN+Logo" alt="ICN Business School Logo" class="h-24 w-24 mb-2 rounded-full shadow-md">
+                        <h4 class="text-lg font-bold text-gray-800">ICN Business School, France</h4>
+                        <p class="text-gray-600 text-sm">Triple-accredited institution combining art, technology, and management.</p>
+                    </div>
+                    <!-- Collaborator 2 -->
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/240x240/BCAAA4/FFF?text=Unina+Logo" alt="Università degli Studi di Napoli Federico II Logo" class="h-24 w-24 mb-2 rounded-full shadow-md">
+                        <h4 class="text-lg font-bold text-gray-800">Università degli Studi di Napoli Federico II, Italy</h4>
+                        <p class="text-gray-600 text-sm">The world's oldest public university, offering a vast array of academic programs.</p>
+                    </div>
+                    <!-- Collaborator 3 -->
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/240x240/BCAAA4/FFF?text=Sussex+Logo" alt="University of Sussex Logo" class="h-24 w-24 mb-2 rounded-full shadow-md">
+                        <h4 class="text-lg font-bold text-gray-800">University of Sussex, United Kingdom</h4>
+                        <p class="text-gray-600 text-sm">A public research university located in Brighton, known for its scenic campus.</p>
+                    </div>
+                    <!-- Collaborator 4 -->
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/240x240/BCAAA4/FFF?text=UTB+Logo" alt="Universiti Teknologi Brunei Logo" class="h-24 w-24 mb-2 rounded-full shadow-md">
+                        <h4 class="text-lg font-bold text-gray-800">Universiti Teknologi Brunei, Brunei</h4>
+                        <p class="text-gray-600 text-sm">An engineering and technology university specializing in niche areas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Keynote Speakers Section -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-12 border-t-4 border-[#00BCD4]">
+                <h3 class="text-2xl font-bold text-gray-700 mb-6">Keynote Speakers</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Sample Keynote Speaker 1 -->
+                    <div class="flex items-center space-x-4">
+                        <img src="https://placehold.co/240x240/BCAAA4/FFF?text=KS1" alt="Speaker 1" class="w-24 h-24 rounded-full shadow-lg">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800">Dr. Jane Doe</h4>
+                            <p class="text-gray-600">Professor of Sustainable Management, University of Excellence</p>
+                            <p class="text-sm italic text-gray-500">Dr. Doe's research focuses on the intersection of corporate strategy and environmental sustainability.</p>
+                        </div>
+                    </div>
+                    <!-- Sample Keynote Speaker 2 -->
+                    <div class="flex items-center space-x-4">
+                        <img src="https://placehold.co/240x240/BCAAA4/FFF?text=KS2" alt="Speaker 2" class="w-24 h-24 rounded-full shadow-lg">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800">Dr. John Smith</h4>
+                            <p class="text-gray-600">Director of Digital Transformation, Global Institute</p>
+                            <p class="text-sm italic text-gray-500">Dr. Smith is a leading expert on leveraging technology for sustainable business models.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Organizing Committee Section -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-12 border-t-4 border-[#00BCD4]">
+                <h3 class="text-2xl font-bold text-gray-700 mb-6">Organizing Committee</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Member 1 -->
+                    <div class="flex flex-col items-center text-center">
+                        <img src="9.webp" alt="Dr. Murali Sambasivan" class="w-32 h-32 rounded-full mb-2 shadow-lg">
+                        <h4 class="text-xl font-bold text-gray-800">Dr. Murali Sambasivan</h4>
+                        <p class="text-sm font-semibold text-gray-600 mb-1">Chief-Patron</p>
+                        <p class="text-gray-600 text-sm">An erudite scholar and expert educator, recognized as one of the top 2% of scientists globally.</p>
+                    </div>
+                    <!-- Member 2 -->
+                    <div class="flex flex-col items-center text-center">
+                        <img src="10.webp" alt="Dr. Selvalakshmi M" class="w-32 h-32 rounded-full mb-2 shadow-lg">
+                        <h4 class="text-xl font-bold text-gray-800">Dr. Selvalakshmi M</h4>
+                        <p class="text-sm font-semibold text-gray-600 mb-1">Patron</p>
+                        <p class="text-gray-600 text-sm">Professor with over two decades of experience in Business Communication and Marketing.</p>
+                    </div>
+                    <!-- Member 3 -->
+                    <div class="flex flex-col items-center text-center">
+                        <img src="11.webp" alt="Dr. K. Mathiyazhagan" class="w-32 h-32 rounded-full mb-2 shadow-lg">
+                        <h4 class="text-xl font-bold text-gray-800">Dr. K. Mathiyazhagan</h4>
+                        <p class="text-sm font-semibold text-gray-600 mb-1">Conference Chairperson</p>
+                        <p class="text-gray-600 text-sm">Professor and Chairperson – Research Centre at TSM, known for extensive publications and editorial roles.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sponsors (Placeholder) -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-12 border-t-4 border-[#00BCD4]">
+                <h3 class="text-2xl font-bold text-gray-700 mb-6">Our Sponsors</h3>
+                <div class="scrolling-images-container flex overflow-x-scroll gap-6">
+                    <img src="https://placehold.co/300x150/E0E0E0/424242?text=Sponsor+1" alt="Sponsor 1" class="sponsor-logo">
+                    <img src="https://placehold.co/300x150/E0E0E0/424242?text=Sponsor+2" alt="Sponsor 2" class="sponsor-logo">
+                    <img src="https://placehold.co/300x150/E0E0E0/424242?text=Sponsor+3" alt="Sponsor 3" class="sponsor-logo">
+                    <img src="https://placehold.co/300x150/E0E0E0/424242?text=Sponsor+4" alt="Sponsor 4" class="sponsor-logo">
+                    <img src="https://placehold.co/300x150/E0E0E0/424242?text=Sponsor+5" alt="Sponsor 5" class="sponsor-logo">
+                </div>
+            </div>
+            
+            <!-- Madurai Section -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-12 border-t-4 border-[#00BCD4]">
+                <h3 class="text-2xl font-bold text-gray-700 mb-4">Discover Madurai</h3>
+                <p class="text-gray-600 mb-4">Madurai, the cultural capital of Tamil Nadu, is a city with a rich history and vibrant traditions. Known for its magnificent temples, bustling markets, and delicious cuisine, it is a city that offers a unique and unforgettable experience.</p>
+                <a href="#" class="inline-block bg-[#4CAF50] text-white font-bold py-2 px-6 rounded-full hover:bg-[#43a047] transition-colors duration-300 transform hover:scale-105">Download Tourist Guide [Placeholder]</a>
+                
+                <div class="scrolling-images-container mt-6">
+                    <div class="scrolling-images">
+                        <img src="17.jpeg" alt="Meenakshi Amman Temple">
+                        <img src="18.jpeg" alt="Alagar Koil">
+                        <img src="19.jpg" alt="Gandhi Museum">
+                        <img src="20.jpeg" alt="Thirupparankundram">
+                        <img src="21.jpg" alt="Othakadai Samanar Hills">
+                        <img src="22.jpg" alt="Thirumalai Nayakkar Palace">
+                        <!-- Repeat images for seamless scrolling -->
+                        <img src="17.jpeg" alt="Meenakshi Amman Temple">
+                        <img src="18.jpeg" alt="Alagar Koil">
+                        <img src="19.jpg" alt="Gandhi Museum">
+                        <img src="20.jpeg" alt="Thirupparankundram">
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- Tracks and Themes Section -->
+        <section id="tracks" class="container mx-auto p-4 mb-12">
+            <h2 class="section-title text-4xl font-bold text-[#4CAF50] text-center mb-10">Tracks and Themes</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
+                    <h3 class="text-xl font-bold text-gray-700 mb-2">Track 1. Human Resource Sustainability</h3>
+                    <p class="text-gray-600">Focuses on how organizations can manage human resources to promote social and environmental sustainability, covering topics like green HRM, employee well-being, and ethical labor practices.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
+                    <h3 class="text-xl font-bold text-gray-700 mb-2">Track 2. Sustainable Finance</h3>
+                    <p class="text-gray-600">Examines financial strategies and instruments that support long-term economic and environmental health, including green banking, impact investing, and sustainable risk management.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
+                    <h3 class="text-xl font-bold text-gray-700 mb-2">Track 3. Sustainability and Operations Management</h3>
+                    <p class="text-gray-600">Explores the integration of sustainable practices into operational processes and supply chains, covering areas like sustainable logistics, lean manufacturing, and circular economy models.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
+                    <h3 class="text-xl font-bold text-gray-700 mb-2">Track 4. Sustainability & Governance</h3>
+                    <p class="text-gray-600">Focuses on the role of corporate governance and public policy in driving sustainability, including corporate social responsibility, stakeholder engagement, and ethical leadership.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
+                    <h3 class="text-xl font-bold text-gray-700 mb-2">Track 5. Digital Transformation & Technology for Sustainability</h3>
+                    <p class="text-gray-600">Highlights how digital technologies can be leveraged to achieve sustainability goals, such as using AI for resource optimization, blockchain for transparent supply chains, and big data for environmental monitoring.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule" class="container mx-auto p-4 mb-12 text-center">
+            <h2 class="section-title text-4xl font-bold text-[#4CAF50] text-center mb-10">Schedule</h2>
+            <p class="text-gray-600 mb-6">The full schedule of the Doctoral Summit is available on a separate online drive. You can download or view it from the link below.</p>
+            <a href="https://placeholder.link/schedule" target="_blank" class="bg-[#4CAF50] text-white font-bold py-3 px-8 rounded-full hover:bg-[#43a047] transition-colors duration-300 transform hover:scale-105 shadow-lg">View Full Schedule</a>
+        </section>
+
+        <!-- Updates Section -->
+        <section id="updates" class="container mx-auto p-4 mb-12">
+            <h2 class="section-title text-4xl font-bold text-[#4CAF50] text-center mb-10">Updates</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#00BCD4]">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Update</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Nov 1, 2025</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">New report highlights the critical role of circular economy models in achieving global sustainability goals.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Oct 25, 2025</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">A recent study shows that investments in green technology have surged by 30% this quarter, indicating a growing market.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Oct 15, 2025</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Global leaders gather at a climate conference to discuss new policies for carbon neutrality by 2050.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback" class="container mx-auto p-4 mb-12">
+            <h2 class="section-title text-4xl font-bold text-[#4CAF50] text-center mb-10">Feedback</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto border-t-4 border-[#00BCD4]">
+                <form id="feedback-form" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-gray-700 font-bold mb-1">Your Name</label>
+                        <input type="text" id="name" name="name" class="w-full border border-gray-300 rounded-md p-2 focus:ring-[#00BCD4] focus:border-[#00BCD4] focus:outline-none" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 font-bold mb-1">Your Email</label>
+                        <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded-md p-2 focus:ring-[#00BCD4] focus:border-[#00BCD4] focus:outline-none" required>
+                    </div>
+                    <div>
+                        <label for="comments" class="block text-gray-700 font-bold mb-1">Comments</label>
+                        <textarea id="comments" name="comments" rows="4" class="w-full border border-gray-300 rounded-md p-2 focus:ring-[#00BCD4] focus:border-[#00BCD4] focus:outline-none" required></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="bg-[#4CAF50] text-white font-bold py-2 px-6 rounded-full hover:bg-[#43a047] transition-colors duration-300 transform hover:scale-105 shadow-lg">Submit Feedback</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- FAQs Section -->
+        <section id="faqs" class="container mx-auto p-4 mb-12">
+            <h2 class="section-title text-4xl font-bold text-[#4CAF50] text-center mb-10">Frequently Asked Questions</h2>
+            <div class="max-w-2xl mx-auto space-y-4">
+                <!-- FAQ 1 -->
+                <details class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#00BCD4] faq-item">
+                    <summary class="text-xl font-bold text-gray-700">What are the dates for the Doctoral Summit?</summary>
+                    <p class="text-gray-600 mt-2">The Doctoral Summit '25 will take place from November 22-24, 2025.</p>
+                </details>
+                <!-- FAQ 2 -->
+                <details class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#00BCD4] faq-item">
+                    <summary class="text-xl font-bold text-gray-700">Is the registration fee refundable?</summary>
+                    <p class="text-gray-600 mt-2">Registration fees are non-refundable. Please ensure all details are correct before completing your payment.</p>
+                </details>
+                <!-- FAQ 3 -->
+                <details class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#00BCD4] faq-item">
+                    <summary class="text-xl font-bold text-gray-700">Do I need to be a PhD scholar to participate?</summary>
+                    <p class="text-gray-600 mt-2">Yes, the summit is open to registered PhD/Doctoral Research Scholars from recognized institutions. Scholars from various related disciplines are welcome to participate.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 p-8">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h5 class="font-bold text-lg mb-2 text-white">Thiagarajar School of Management</h5>
+                <p class="text-sm">&copy; 2025 Thiagarajar School of Management. All rights reserved.</p>
+                <div class="mt-4">
+                    <h5 class="font-bold text-md mb-1 text-white">Sitemap</h5>
+                    <ul class="flex flex-wrap gap-x-4 text-sm">
+                        <li><a href="#home" class="hover:text-[#4CAF50]">Home</a></li>
+                        <li><a href="#about" class="hover:text-[#4CAF50]">About</a></li>
+                        <li><a href="#tracks" class="hover:text-[#4CAF50]">Tracks and Themes</a></li>
+                        <li><a href="#schedule" class="hover:text-[#4CAF50]">Schedule</a></li>
+                        <li><a href="#updates" class="hover:text-[#4CAF50]">Updates</a></li>
+                        <li><a href="#feedback" class="hover:text-[#4CAF50]">Feedback</a></li>
+                        <li><a href="#faqs" class="hover:text-[#4CAF50]">FAQs</a></li>
+                        <li><a href="#registration" class="hover:text-[#4CAF50]">Registration</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h5 class="font-bold text-lg mb-2 text-white">Contact Us</h5>
+                <p>Conference Chairperson: <a href="mailto:chairperson@tsm.ac.in" class="text-green-400 hover:text-green-500">chairperson@tsm.ac.in [Placeholder]</a></p>
+                <p>General Enquiries: <a href="mailto:info@tsm.ac.in" class="text-green-400 hover:text-green-500">info@tsm.ac.in [Placeholder]</a></p>
+            </div>
+            <div class="h-48 rounded-lg overflow-hidden shadow-md">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.988018617306!2d78.07727197598813!3d9.896700073539958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c8227b409605%3A0x673400a40d5885c4!2sThiagarajar%20School%20of%20Management%20(TSM)!5e0!3m2!1sen!2sin!4v1699945532508!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burgerIcon = document.getElementById('burger-icon');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Toggle mobile navigation on burger icon click
+            if (burgerIcon && mobileMenu) {
+                burgerIcon.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('show');
+                });
+            }
+
+            // Handle feedback form submission
+            const feedbackForm = document.getElementById('feedback-form');
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const comments = document.getElementById('comments').value;
+
+                    console.log("Feedback Submitted:");
+                    console.log("Name:", name);
+                    console.log("Email:", email);
+                    console.log("Comments:", comments);
+
+                    alert("Thank you for your feedback! It has been submitted.");
+                    feedbackForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
