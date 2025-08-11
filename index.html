@@ -33,7 +33,9 @@
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background-color: #00BCD4;
+            background: linear-gradient(-45deg, #4CAF50, #00BCD4, #4CAF50);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
             border-radius: 2px;
         }
 
@@ -61,8 +63,8 @@
 
         /* Auto-scrolling Gallery Animation */
         @keyframes gallery-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
         }
         .scrolling-images-container {
             -webkit-overflow-scrolling: touch;
@@ -75,13 +77,17 @@
             display: flex;
             gap: 1.5rem;
             animation: gallery-scroll 40s linear infinite;
-            padding-right: 1.5rem; /* For seamless loop */
+            width: 200%; /* Double the width for a seamless loop */
         }
         .scrolling-images:hover {
             animation-play-state: paused;
         }
-        .scrolling-images img {
+        .scrolling-images-item {
             flex-shrink: 0;
+            width: 300px;
+            text-align: center;
+        }
+        .scrolling-images-item img {
             width: 300px;
             height: 200px;
             object-fit: cover;
@@ -130,7 +136,6 @@
         .dropdown-menu {
             display: none;
         }
-        
     </style>
 </head>
 <body class="bg-[#FAFAFA] text-[#333] selection:bg-[#4CAF50] selection:text-white">
@@ -140,7 +145,7 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <!-- TSM Logo Placeholder -->
-                <img src="https://placehold.co/60x60/BCAAA4/FFF?text=TSM+Logo" alt="TSM Logo" class="h-12 w-12 rounded-full shadow-lg">
+                <img src="1.png" alt="TSM Logo" class="h-12 w-12 rounded-full shadow-lg">
                 <a href="#home" class="text-xl font-bold text-gray-800">
                     Thiagarajar School of Management <span class="font-normal text-lg text-gray-600">FOS 2026-IRGR</span>
                 </a>
@@ -171,16 +176,16 @@
                         </ul>
                     </li>
                     <li class="relative dropdown">
-                        <a href="#tracks" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Tracks and Themes</a>
+                        <a href="#tracks" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Pathways</a>
                         <ul class="dropdown-menu absolute bg-white shadow-lg rounded-md mt-2 py-2 w-56 z-10">
-                            <li><a href="#track-list" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">List of Tracks</a></li>
+                            <li><a href="#tracks" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Tracks & Themes</a></li>
                             <li><a href="#track-details" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Track Details</a></li>
                             <li><a href="#who-can-participate" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Who Can Participate?</a></li>
                             <li><a href="#publication-avenues" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Publication Avenues</a></li>
                         </ul>
                     </li>
                     <li class="relative dropdown">
-                        <a href="#schedule" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Submission & Schedule</a>
+                        <a href="#submission-procedure" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Submission & Schedule</a>
                         <ul class="dropdown-menu absolute bg-white shadow-lg rounded-md mt-2 py-2 w-56 z-10">
                             <li><a href="#submission-procedure" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Submission Procedure</a></li>
                             <li><a href="#key-dates" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Key Dates</a></li>
@@ -192,7 +197,7 @@
                     <li><a href="#updates" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Updates</a></li>
                     <li><a href="#feedback" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Feedback</a></li>
                     <li><a href="#faqs" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">FAQs</a></li>
-                    <li><a href="#registration" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Registration</a></li>
+                    <li><a href="#registration" class="text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Sign-in / Sign up</a></li>
                 </ul>
             </nav>
             
@@ -206,7 +211,7 @@
                     <li><a href="#updates" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Updates</a></li>
                     <li><a href="#feedback" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Feedback</a></li>
                     <li><a href="#faqs" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">FAQs</a></li>
-                    <li><a href="#registration" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Registration</a></li>
+                    <li><a href="#registration" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Sign-in / Sign up</a></li>
                 </ul>
             </nav>
         </div>
@@ -231,10 +236,10 @@
             <div class="bg-gray-100 rounded-lg shadow-xl overflow-hidden">
                 <div class="relative h-96 flex items-center justify-center text-white p-8 hero-banner">
                     <div class="relative text-center">
-                        <!-- DS Logo Placeholder -->
                         <img src="2.png" alt="FOS 2026-IRGR Logo" class="h-24 mx-auto mb-4 shadow-lg">
                         <h1 class="text-4xl md:text-6xl font-extrabold mb-2">FOS 2026-IRGR</h1>
                         <p class="text-lg md:text-2xl font-light">International Conference on Frontiers of Sustainability- Innovation, Research, and Global Responsibility</p>
+                        <p class="text-xl md:text-2xl font-light mt-2">22nd - 24th January 2026</p>
                     </div>
                 </div>
             </div>
@@ -400,17 +405,47 @@
                 
                 <div class="scrolling-images-container mt-6">
                     <div class="scrolling-images">
-                        <img src="17.jpeg" alt="Meenakshi Amman Temple">
-                        <img src="18.jpeg" alt="Alagar Koil">
-                        <img src="19.jpg" alt="Gandhi Museum">
-                        <img src="20.jpeg" alt="Thirupparankundram">
-                        <img src="21.jpg" alt="Othakadai Samanar Hills">
-                        <img src="22.jpg" alt="Thirumalai Nayakkar Palace">
+                        <div class="scrolling-images-item">
+                            <img src="17.jpeg" alt="Meenakshi Amman Temple">
+                            <p class="mt-2 text-sm text-gray-600 font-semibold">Meenakshi Amman Temple</p>
+                        </div>
+                        <div class="scrolling-images-item">
+                            <img src="18.jpeg" alt="Alagar Koil">
+                            <p class="mt-2 text-sm text-gray-600 font-semibold">Alagar Koil</p>
+                        </div>
+                        <div class="scrolling-images-item">
+                            <img src="19.jpg" alt="Gandhi Museum">
+                            <p class="mt-2 text-sm text-gray-600 font-semibold">Gandhi Museum</p>
+                        </div>
+                        <div class="scrolling-images-item">
+                            <img src="20.jpeg" alt="Thirupparankundram">
+                            <p class="mt-2 text-sm text-gray-600 font-semibold">Thirupparankundram</p>
+                        </div>
+                        <div class="scrolling-images-item">
+                            <img src="21.jpg" alt="Othakadai Samanar Hills">
+                            <p class="mt-2 text-sm text-gray-600 font-semibold">Othakadai Samanar Hills</p>
+                        </div>
+                        <div class="scrolling-images-item">
+                            <img src="22.jpg" alt="Thirumalai Nayakkar Palace">
+                            <p class="mt-2 text-sm text-gray-600 font-semibold">Thirumalai Nayakkar Palace</p>
+                        </div>
                         <!-- Repeat images for seamless scrolling -->
-                        <img src="17.jpeg" alt="Meenakshi Amman Temple">
-                        <img src="18.jpeg" alt="Alagar Koil">
-                        <img src="19.jpg" alt="Gandhi Museum">
-                        <img src="20.jpeg" alt="Thirupparankundram">
+                        <div class="scrolling-images-item">
+                            <img src="17.jpeg" alt="Meenakshi Amman Temple">
+                            <p class="mt-2 text-sm text-gray-600 font-semibold">Meenakshi Amman Temple</p>
+                        </div>
+                        <div class="scrolling-images-item">
+                            <img src="18.jpeg" alt="Alagar Koil">
+                            <p class="mt-2 text-sm text-gray-600 font-semibold">Alagar Koil</p>
+                        </div>
+                        <div class="scrolling-images-item">
+                            <img src="19.jpg" alt="Gandhi Museum">
+                            <p class="mt-2 text-sm text-gray-600 font-semibold">Gandhi Museum</p>
+                        </div>
+                        <div class="scrolling-images-item">
+                            <img src="20.jpeg" alt="Thirupparankundram">
+                            <p class="mt-2 text-sm text-gray-600 font-semibold">Thirupparankundram</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -431,102 +466,39 @@
             <div id="track-details" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Track 1. Sustainable Entrepreneurship and Business Models</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>Green and Circular Business Models</li>
-                        <li>Social Entrepreneurship and Inclusive Innovation</li>
-                        <li>Business Strategy for Sustainability</li>
-                        <li>Sustainable Supply Chain Models</li>
-                        <li>Entrepreneurship for Bottom of the Pyramid (BoP) Markets</li>
-                        <li>Impact-Driven Business Design</li>
-                    </ul>
+                    <p class="text-gray-600">This track explores how organizations can manage human resources to promote social and environmental sustainability, covering topics like green HRM, employee well-being, and ethical labor practices.</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Track 2. Technological Innovations for Sustainability</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>Clean Energy Technologies (Solar, Wind, Bio-energy)</li>
-                        <li>AI, IoT, and Big Data for Sustainable Solutions</li>
-                        <li>Blockchain for Transparency in Supply Chains</li>
-                        <li>Sustainable Product Design and Manufacturing</li>
-                        <li>Smart Cities and Infrastructure Innovation</li>
-                        <li>Low-Carbon and Green Tech Startups</li>
-                    </ul>
+                    <p class="text-gray-600">This track explores financial strategies and instruments that support long-term economic and environmental health, including green banking, impact investing, and sustainable risk management.</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Track 3. Financing Sustainability and Impact Investing</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>Venture Capital for Green Startups</li>
-                        <li>ESG Investing and Green Bonds</li>
-                        <li>Innovative Financing Models (Crowdfunding, FinTech)</li>
-                        <li>Microfinance and Grassroots Enterprise Support</li>
-                        <li>Risk Mitigation in Sustainable Investment</li>
-                        <li>Public and Private Funding Synergies</li>
-                    </ul>
+                    <p class="text-gray-600">This track explores the integration of sustainable practices into operational processes and supply chains, covering areas like sustainable logistics, lean manufacturing, and circular economy models.</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Track 4. Policy, Regulation, and Governance for Sustainability</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>National and Global Climate Policies</li>
-                        <li>SDGs and International Governance</li>
-                        <li>Public-Private Partnerships (PPP) for Sustainability</li>
-                        <li>Sustainable Business Compliance and Reporting</li>
-                        <li>Regulatory Innovation and Legal Frameworks</li>
-                        <li>Ethical Leadership in Policy Design</li>
-                    </ul>
+                    <p class="text-gray-600">This track explores the role of corporate governance and public policy in driving sustainability, including corporate social responsibility, stakeholder engagement, and ethical leadership.</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Track 5. Education and Capacity Building for Green Entrepreneurship</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>Sustainability in the Higher Education Curriculum</li>
-                        <li>Entrepreneurship Skill Development Programs</li>
-                        <li>Capacity Building for Women and Youth</li>
-                        <li>Creating Entrepreneurial Ecosystems in Rural and Urban Areas</li>
-                        <li>Incubation and Mentorship for Green Startups</li>
-                        <li>Gamification and Experiential Learning in Sustainability</li>
-                    </ul>
+                    <p class="text-gray-600">This track highlights how digital technologies can be leveraged to achieve sustainability goals, such as using AI for resource optimization, blockchain for transparent supply chains, and big data for environmental monitoring.</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Track 6. Digital Transformation and Sustainable Development</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>Digital Inclusion for Marginalized Communities</li>
-                        <li>E-Governance and Digital Public Services</li>
-                        <li>Industry 4.0 and Sustainable Industrialization</li>
-                        <li>Digital Literacy for Entrepreneurs</li>
-                        <li>Data-Driven Decision Making for SDG Goals</li>
-                        <li>ICT for Agriculture, Health, and Education</li>
-                    </ul>
+                    <p class="text-gray-600">This track focuses on how organizations can manage human resources to promote social and environmental sustainability, covering topics like green HRM, employee well-being, and ethical labor practices.</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Track 7. Measuring Impact and Scaling Sustainable Ventures</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>Impact Measurement Tools and Frameworks</li>
-                        <li>ESG Metrics and Sustainability Reporting Standards</li>
-                        <li>Case Studies of Scaled Sustainable Models</li>
-                        <li>Partnerships for Scale and Collective Impact</li>
-                        <li>Long-Term Monitoring of Social and Environmental Outcomes</li>
-                        <li>Global Benchmarking and Indicators</li>
-                    </ul>
+                    <p class="text-gray-600">This track explores financial strategies and instruments that support long-term economic and environmental health, including green banking, impact investing, and sustainable risk management.</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Track 8. Global Responsibility and Ethical Leadership</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>Ethics in Sustainable Innovation and Entrepreneurship</li>
-                        <li>Leadership for Climate Justice and Equity</li>
-                        <li>Cross-Border Collaboration on SDGs</li>
-                        <li>Indigenous and Local Knowledge Integration</li>
-                        <li>Responsible Consumption and Production Patterns</li>
-                        <li>Global Citizenship and Sustainability Narratives</li>
-                    </ul>
+                    <p class="text-gray-600">This track explores the integration of sustainable practices into operational processes and supply chains, covering areas like sustainable logistics, lean manufacturing, and circular economy models.</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#4CAF50]">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Track 9. Sustainable Economic Growth in a Low-Carbon Future</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>Sectoral Low-Carbon Transition Models</li>
-                        <li>Green Industrial Policy and Governance</li>
-                        <li>Carbon Pricing and Market-Based Mechanisms</li>
-                        <li>Circular Economy and Resource Efficiency</li>
-                        <li>Climate Finance and Green Investments</li>
-                        <li>Technological Innovation for Low-Carbon Growth</li>
-                    </ul>
+                    <p class="text-gray-600">This track focuses on the role of corporate governance and public policy in driving sustainability, including corporate social responsibility, stakeholder engagement, and ethical leadership.</p>
                 </div>
             </div>
         </section>
@@ -760,7 +732,7 @@
                         <li><a href="#updates" class="hover:text-[#4CAF50]">Updates</a></li>
                         <li><a href="#feedback" class="hover:text-[#4CAF50]">Feedback</a></li>
                         <li><a href="#faqs" class="hover:text-[#4CAF50]">FAQs</a></li>
-                        <li><a href="#registration" class="hover:text-[#4CAF50]">Registration</a></li>
+                        <li><a href="#registration" class="hover:text-[#4CAF50]">Sign-in / Sign up</a></li>
                     </ul>
                 </div>
             </div>
@@ -788,46 +760,75 @@
             const burgerIcon = document.getElementById('burger-icon');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('#mobile-menu a');
+            const desktopLinks = document.querySelectorAll('nav.md\\:block a[href^="#"]');
+
+            // Function to smoothly scroll to a section
+            const smoothScroll = (e) => {
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const topOffset = targetElement.getBoundingClientRect().top + window.scrollY;
+                    const y = topOffset - headerHeight - 20; // 20px padding
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            };
+            
+            // Add smooth scroll to desktop links
+            desktopLinks.forEach(link => {
+                link.addEventListener('click', smoothScroll);
+            });
 
             // Toggle mobile navigation on burger icon click
             if (burgerIcon && mobileMenu) {
-                burgerIcon.addEventListener('click', function() {
+                burgerIcon.addEventListener('click', function(event) {
+                    event.stopPropagation();
                     mobileMenu.classList.toggle('show');
+                });
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenu.contains(event.target) && !burgerIcon.contains(event.target)) {
+                        mobileMenu.classList.remove('show');
+                    }
                 });
             }
 
-            // Close mobile menu when a link inside it is clicked
+            // Close mobile menu when a link inside it is clicked and apply smooth scroll
             mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
+                link.addEventListener('click', (e) => {
                     mobileMenu.classList.remove('show');
+                    smoothScroll(e);
                 });
             });
 
             // Handle dropdown functionality on desktop
             const dropdowns = document.querySelectorAll('.dropdown');
+            let activeDropdown = null;
+            let hideTimer;
+
             dropdowns.forEach(dropdown => {
-                let timer;
                 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                
-                dropdown.addEventListener('mouseenter', () => {
-                    // Close all other dropdowns immediately
-                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                        if (menu !== dropdownMenu) {
-                            menu.style.display = 'none';
-                        }
+                if (dropdownMenu) {
+                    dropdown.addEventListener('mouseenter', () => {
+                        clearTimeout(hideTimer);
+                        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                            if (menu !== dropdownMenu) {
+                                menu.style.display = 'none';
+                            }
+                        });
+                        dropdownMenu.style.display = 'block';
+                        activeDropdown = dropdownMenu;
                     });
-                    
-                    clearTimeout(timer);
-                    dropdownMenu.style.display = 'block';
-                });
 
-                dropdown.addEventListener('mouseleave', () => {
-                    timer = setTimeout(() => {
-                        dropdownMenu.style.display = 'none';
-                    }, 200); // 200ms delay to allow cursor to move to the menu
-                });
+                    dropdown.addEventListener('mouseleave', () => {
+                        hideTimer = setTimeout(() => {
+                            dropdownMenu.style.display = 'none';
+                            activeDropdown = null;
+                        }, 200);
+                    });
+                }
             });
-
+            
             // Handle feedback form submission
             const feedbackForm = document.getElementById('feedback-form');
             if (feedbackForm) {
