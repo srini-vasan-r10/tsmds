@@ -136,20 +136,16 @@
         .dropdown-menu {
             display: none;
         }
-        .navbar {
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-            backdrop-filter: blur(8px); /* Apply the blur effect */
-        }
     </style>
 </head>
 <body class="bg-[#FAFAFA] text-[#333] selection:bg-[#4CAF50] selection:text-white">
     
     <!-- Header with TSM logo, name, and burger icon -->
-    <header class="navbar shadow-lg p-4 sticky top-0 z-50">
+    <header class="bg-white shadow-lg p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <!-- TSM Logo Placeholder -->
-                <img src="1.png" alt="TSM Logo" class="h-12 w-12 rounded-full shadow-lg">
+                <img src="1.png" alt="TSM Logo" class="h-12 w-12 rounded-[10%] shadow-lg">
                 <a href="#home" class="text-xl font-bold text-gray-800">
                     Thiagarajar School of Management <span class="font-normal text-lg text-gray-600">FOS 2026-IRGR</span>
                 </a>
@@ -206,12 +202,12 @@
             </nav>
             
             <!-- Mobile Navigation Menu -->
-            <nav id="mobile-menu" class="mobile-nav-menu navbar absolute top-full right-0 w-48 shadow-lg md:hidden rounded-b-lg">
+            <nav id="mobile-menu" class="mobile-nav-menu bg-white/80 backdrop-blur-md shadow-lg absolute top-full right-0 w-48 rounded-b-lg md:hidden">
                 <ul class="flex flex-col p-4 space-y-2">
                     <li><a href="#home" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Home</a></li>
                     <li><a href="#about" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">About</a></li>
-                    <li><a href="#tracks" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Tracks and Themes</a></li>
-                    <li><a href="#schedule" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Schedule</a></li>
+                    <li><a href="#tracks" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Pathways</a></li>
+                    <li><a href="#schedule" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Submission & Schedule</a></li>
                     <li><a href="#updates" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Updates</a></li>
                     <li><a href="#feedback" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">Feedback</a></li>
                     <li><a href="#faqs" class="mobile-link block py-2 text-gray-600 hover:text-[#4CAF50] font-semibold transition-colors duration-300">FAQs</a></li>
@@ -234,13 +230,13 @@
         </div>
     </div>
 
-    <main class="mt-4">
+    <main class="mt-4 content-container">
         <!-- Home Section (Hero Banner) -->
         <section id="home" class="container mx-auto p-4 mb-12">
             <div class="bg-gray-100 rounded-lg shadow-xl overflow-hidden">
                 <div class="relative h-96 flex items-center justify-center text-white p-8 hero-banner">
                     <div class="relative text-center">
-                        <img src="2.png" alt="FOS 2026-IRGR Logo" class="h-24 mx-auto mb-4 shadow-lg">
+                        <img src="2.png" alt="FOS 2026-IRGR Logo" class="w-[150px] mx-auto mb-4 rounded-[10%] shadow-lg">
                         <h1 class="text-4xl md:text-6xl font-extrabold mb-2">FOS 2026-IRGR</h1>
                         <p class="text-lg md:text-2xl font-light">International Conference on Frontiers of Sustainability- Innovation, Research, and Global Responsibility</p>
                         <p class="text-xl md:text-2xl font-light mt-2">22nd - 24th January 2026</p>
@@ -346,7 +342,7 @@
                     </div>
                     <!-- Member 2 -->
                     <div class="flex flex-col items-center text-center">
-                        <img src="10.webp" alt="Dr. Selvalakshmi M" class="w-32 h-32 rounded-full mb-2 shadow-lg">
+                        <img src="10.webp" alt="Dr. M. Selvalakshmi" class="w-32 h-32 rounded-full mb-2 shadow-lg">
                         <h4 class="text-xl font-bold text-gray-800">Dr. M. Selvalakshmi</h4>
                         <p class="text-sm font-semibold text-gray-600 mb-1">Patron & Professor</p>
                         <p class="text-gray-600 text-sm">Thiagarajar School of Management, Madurai</p>
